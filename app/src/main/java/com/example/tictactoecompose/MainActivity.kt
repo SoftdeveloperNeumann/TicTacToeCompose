@@ -26,13 +26,15 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.ViewModel
 
 import com.example.tictactoecompose.TicTacToeViewModel.currentUser
+import com.example.tictactoecompose.TicTacToeViewModel.currentUserText
 import com.example.tictactoecompose.ui.theme.TicTacToeComposeTheme
 
 var screenWidth: Float = 0f
 var screenHeigt: Float = 0f
 
 object TicTacToeViewModel : ViewModel() {
-    var currentUser by mutableStateOf("Rot")
+    var currentUser by mutableStateOf("X")
+    var currentUserText = "X"
 }
 
 class MainActivity : ComponentActivity() {
@@ -46,7 +48,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     Column() {
-                        Status("Rot")
+                        Status("X")
 
                         BoxWithConstraints(
                             modifier = Modifier.fillMaxSize(),
@@ -91,18 +93,24 @@ fun Feld(modifier: Modifier) {
     var bColor by remember {
         mutableStateOf(Color.White)
     }
-    Text(
-        text = "",
-        modifier = modifier
-            .fillMaxSize(1f)
+    Box(modifier = modifier
+        .fillMaxSize(1f)
 
-            .clickable {
-                bColor = feldOnClick(bColor)
-            }
-            .background(bColor),
-        fontSize = 36.sp,
-        textAlign = TextAlign.Center,
-    )
+        .clickable {
+            bColor = feldOnClick(bColor)
+        }
+        .background(bColor),
+    contentAlignment = Center)
+    {
+        Text(
+            text =if(bColor== Color.White) "" else currentUserText,
+//            modifier = Modifier
+//                .background(bColor),
+            fontSize = 36.sp,
+            textAlign = TextAlign.Center,
+        )
+    }
+
 
 
 }
@@ -112,12 +120,14 @@ fun feldOnClick(bColor: Color): Color {
     var retColor = bColor
     if (retColor == Color.White) {
 
-        if (currentUser == "Rot") {
+        if (currentUser == "X") {
             retColor = Color.Red
-            currentUser = "Grün"
+            currentUser = "O"
+            currentUserText = "X"
         } else {
             retColor = Color.Green
-            currentUser = "Rot"
+            currentUser = "X"
+            currentUserText = "O"
         }
     }
     return retColor
@@ -158,6 +168,11 @@ fun Spielfeld(rows: Int, cols: Int) {
     }
 
 }
+
+
+
+
+
 
 @Preview(showBackground = true)
 @Composable
