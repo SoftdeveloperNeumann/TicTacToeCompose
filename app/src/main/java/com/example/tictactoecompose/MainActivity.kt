@@ -17,6 +17,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.tictactoecompose.engin.screenHeigt
 import com.example.tictactoecompose.engin.screenWidth
+import com.example.tictactoecompose.model.TicTacToeViewModel.isDraw
+import com.example.tictactoecompose.model.TicTacToeViewModel.isWon
+import com.example.tictactoecompose.model.TicTacToeViewModel.rowCount
 import com.example.tictactoecompose.ui.ActionButton
 import com.example.tictactoecompose.ui.Spielfeld
 import com.example.tictactoecompose.ui.Status
@@ -41,11 +44,14 @@ class MainActivity : ComponentActivity() {
                                 .fillMaxSize(),
                             contentAlignment = Center
                         ) {
-                            Spielfeld(rows = 3, cols = 3)
+                            Spielfeld(rows = rowCount, cols = rowCount)
 
-                            ActionButton(modifier = Modifier
-                                .padding(16.dp)
-                                .align(BottomEnd))
+                            if(isWon || isDraw){
+                                ActionButton(modifier = Modifier
+                                    .padding(16.dp)
+                                    .align(BottomEnd))
+                            }
+
                         }
                     }
                 }
