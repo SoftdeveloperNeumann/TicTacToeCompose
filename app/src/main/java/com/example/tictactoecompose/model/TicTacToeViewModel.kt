@@ -5,7 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
-
+// ViewModel nicht Notwendig aber scheinbar best practice
 object TicTacToeViewModel : ViewModel() {
     var currentUser by mutableStateOf("X")
     var currentUserText = "X"
@@ -13,6 +13,7 @@ object TicTacToeViewModel : ViewModel() {
     var isWon  by mutableStateOf(false)
     var isDraw  by mutableStateOf(false)
     val startColor = Color.White
-    var allFields by mutableStateOf(Array(3) { Array(3) { "" } })
     var rowCount by mutableStateOf(3)
+    var allFields by mutableStateOf(Array(rowCount) { Array(rowCount) { "" } })
+
 }

@@ -118,8 +118,9 @@ fun ActionButton(modifier: Modifier) {
             TicTacToeViewModel.currentUser = ""
             TicTacToeViewModel.currentUser = "X"
             TicTacToeViewModel.currentUserText = "X"
-            TicTacToeViewModel.allFields = Array(3) { Array(3) { "" } }
             TicTacToeViewModel.rowCount++
+            TicTacToeViewModel.allFields = Array(TicTacToeViewModel.rowCount) { Array(TicTacToeViewModel.rowCount) { "" } }
+
         }
     ) {
         Text(text = "Reset")
