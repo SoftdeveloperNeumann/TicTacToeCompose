@@ -11,6 +11,7 @@ object TicTacToeViewModel : ViewModel() {
     var currentUserText = "X"
     var isPlaying = true
     var isWon = false
+    var isDraw = false
     val startColor = Color.White
     var allFields by mutableStateOf(Array(3) { Array(3) { "" } })
 }

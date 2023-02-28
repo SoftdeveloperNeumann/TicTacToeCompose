@@ -7,10 +7,8 @@ import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment.Companion.BottomEnd
 import androidx.compose.ui.Alignment.Companion.Center
@@ -19,11 +17,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.tictactoecompose.engin.screenHeigt
 import com.example.tictactoecompose.engin.screenWidth
-import com.example.tictactoecompose.model.TicTacToeViewModel.allFields
-import com.example.tictactoecompose.model.TicTacToeViewModel.currentUser
-import com.example.tictactoecompose.model.TicTacToeViewModel.currentUserText
-import com.example.tictactoecompose.model.TicTacToeViewModel.isPlaying
-import com.example.tictactoecompose.model.TicTacToeViewModel.isWon
 import com.example.tictactoecompose.ui.ActionButton
 import com.example.tictactoecompose.ui.Spielfeld
 import com.example.tictactoecompose.ui.Status

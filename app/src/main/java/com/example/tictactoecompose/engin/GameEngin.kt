@@ -2,6 +2,8 @@ package com.example.tictactoecompose.engin
 
 import androidx.compose.ui.graphics.Color
 import com.example.tictactoecompose.model.TicTacToeViewModel
+import com.example.tictactoecompose.model.TicTacToeViewModel.isDraw
+
 
 var screenWidth: Float = 0f
 var screenHeigt: Float = 0f
@@ -24,6 +26,18 @@ fun feldOnClick(bColor: Color, row: Int, col: Int): Color {
         if (checkWin()) {
             TicTacToeViewModel.isWon = true
             TicTacToeViewModel.currentUser = TicTacToeViewModel.currentUserText
+
+        }else {
+            var hasFreeFeld = false
+            TicTacToeViewModel.allFields.forEach { array ->
+                array.forEach { string ->
+                    if(string == "")
+                        hasFreeFeld = true
+                }
+            }
+            if(!hasFreeFeld){
+                isDraw = true
+            }
         }
     }
     return retColor

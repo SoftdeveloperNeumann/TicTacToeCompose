@@ -2,5 +2,5 @@
     <string name="app_name">TicTacToeCompose</string>
     <string name="status_play">Spieler %1$s ist an der Reihe</string>
     <string name="status_win">Spieler %1$s hat gewonnen</string>
-    <string name="status_draw">Unentschieden</string>
+    <string name="status_draw">Unentschieden zwischen %1$s und %2$s</string>
 </resources>

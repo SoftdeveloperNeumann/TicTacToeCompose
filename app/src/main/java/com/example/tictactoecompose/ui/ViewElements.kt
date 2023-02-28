@@ -31,6 +31,9 @@ fun Status(name: String) {
         Text(
             text = if (TicTacToeViewModel.isWon)
                 stringResource(id = R.string.status_win, TicTacToeViewModel.currentUser)
+            else if (TicTacToeViewModel.isDraw){
+                stringResource(id = R.string.status_draw, TicTacToeViewModel.currentUser, TicTacToeViewModel.currentUserText)
+            }
             else
                 stringResource(id = R.string.status_play, TicTacToeViewModel.currentUser),
             modifier = Modifier
@@ -111,6 +114,7 @@ fun ActionButton(modifier: Modifier) {
         onClick = {
             TicTacToeViewModel.isPlaying = false
             TicTacToeViewModel.isWon = false
+            TicTacToeViewModel.isDraw = false
             TicTacToeViewModel.currentUser = ""
             TicTacToeViewModel.currentUser = "X"
             TicTacToeViewModel.currentUserText = "X"
