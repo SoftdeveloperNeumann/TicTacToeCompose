@@ -7,24 +7,21 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
-import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.ViewModel
-
 import com.example.tictactoecompose.TicTacToeViewModel.currentUser
 import com.example.tictactoecompose.TicTacToeViewModel.currentUserText
 import com.example.tictactoecompose.ui.theme.TicTacToeComposeTheme
@@ -47,18 +44,18 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Column() {
+                    Column {
                         Status("X")
 
                         BoxWithConstraints(
-                            modifier = Modifier.fillMaxSize(),
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .background(Color.Red, RectangleShape),
                             contentAlignment = Center
                         ) {
                             Spielfeld(rows = 3, cols = 3)
                         }
-
                     }
-
                 }
             }
         }
@@ -85,7 +82,6 @@ fun Status(name: String) {
             fontSize = 24.sp
         )
     }
-
 }
 
 @Composable
@@ -100,21 +96,17 @@ fun Feld(modifier: Modifier) {
             bColor = feldOnClick(bColor)
         }
         .background(bColor),
-    contentAlignment = Center)
+        contentAlignment = Center)
     {
         Text(
-            text =if(bColor== Color.White) "" else currentUserText,
+            text = if (bColor == Color.White) "" else currentUserText,
 //            modifier = Modifier
 //                .background(bColor),
             fontSize = 36.sp,
             textAlign = TextAlign.Center,
         )
     }
-
-
-
 }
-
 
 fun feldOnClick(bColor: Color): Color {
     var retColor = bColor
@@ -143,8 +135,7 @@ fun Spielfeld(rows: Int, cols: Int) {
             .fillMaxWidth()
             .padding(8.dp),
         verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-
+        horizontalAlignment = CenterHorizontally
     ) {
         repeat(rows) {
             Row(
@@ -160,25 +151,18 @@ fun Spielfeld(rows: Int, cols: Int) {
                             .border(1.dp, Color.Black)
                     )
                 }
-
             }
-
         }
-
     }
-
 }
-
-
-
-
-
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     TicTacToeComposeTheme {
-        Status("Android")
-        Spielfeld(rows = 3, cols = 3)
+        Column {
+            Status("Android")
+            Spielfeld(rows = 3, cols = 3)
+        }
     }
 }
